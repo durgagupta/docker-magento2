@@ -84,6 +84,20 @@ To clear varnish, you can use the `cli` containers `magento-command` to clear th
 
 If you need to add your own VCL, then it needs to be mounted to: `/data/varnish.vcl`.
 
+#### Configure Magento to purge Varnish
+
+Magento purges Varnish hosts after you configure Varnish hosts using the `magento setup:config:set` command.
+
+You can use the optional parameter --http-cache-hosts parameter to specify a comma-separated list of Varnish hosts and listen ports. Configure all Varnish hosts, whether you have one or many. (Do not separate hosts with a space character.)
+
+The parameter format must be <hostname or ip>:<listen port>, where you can omit <listen port> if it’s port 80.
+
+For current docker
+   
+    magento config:set system/full_page_cache/caching_application 2
+    magento setup:config:set --http-cache-hosts=varnish:80
+
+
 ## Building
 
 A lot of the configuration for each image is the same, with the difference being the base image that they're extending from.  For this reason we use `php` to build the `Dockerfile` from a set of templates in `src/`.  The `Dockerfile` should still be published to the repository due to Docker Hub needing a `Dockerfile` to build from.
