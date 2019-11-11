@@ -20,7 +20,7 @@ RUN apt-get update \
     sudo \ 
     cron \ 
     rsyslog \ 
-    mysql-client \ 
+    mariadb-client \ 
     git
 
 # Configure the gd library
@@ -81,6 +81,11 @@ RUN curl -LO https://s3.eu-west-2.amazonaws.com/magedbm2-releases/magedbm2.phar 
 
 # Install mageconfigsync and move to /usr/local/bin
 RUN curl -L https://github.com/punkstar/mageconfigsync/releases/download/0.5.0-beta.1/mageconfigsync-0.5.0-beta.1.phar > mageconfigsync.phar && chmod +x ./mageconfigsync.phar && mv ./mageconfigsync.phar /usr/local/bin
+
+# Install Node.js and npm
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g grunt-cli
 
 ADD bin/* /usr/local/bin/
 
