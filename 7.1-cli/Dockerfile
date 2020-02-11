@@ -20,7 +20,7 @@ RUN apt-get update \
     sudo \ 
     cron \ 
     rsyslog \ 
-    mysql-client \ 
+    default-mysql-client \ 
     git
 
 # Configure the gd library
@@ -39,6 +39,7 @@ RUN docker-php-ext-install \
   zip \ 
   soap \ 
   bcmath \ 
+  pcntl \ 
   mcrypt
 
 # Install Xdebug (but don't enable)

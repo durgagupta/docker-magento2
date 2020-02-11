@@ -20,7 +20,11 @@ RUN apt-get update \
     sudo \ 
     cron \ 
     rsyslog \ 
+<<<<<<< HEAD
     mariadb-client \ 
+=======
+    default-mysql-client \ 
+>>>>>>> upstream/master
     git
 
 # Configure the gd library
@@ -38,7 +42,8 @@ RUN docker-php-ext-install \
   xsl \ 
   zip \ 
   soap \ 
-  bcmath
+  bcmath \ 
+  pcntl
 
 # Install Xdebug (but don't enable)
 RUN pecl install -o -f xdebug
